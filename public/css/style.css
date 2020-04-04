@@ -1,0 +1,111 @@
+html,
+body {
+  background: #002134;
+  color: white;
+}
+.charts_orb {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
+  font-family: arial;
+  color: white;
+}
+.charts_orb .orb {
+  padding: 20px;
+}
+.charts_orb .orb .orb_graphic {
+  position: relative;
+}
+.charts_orb .orb .orb_graphic .orb_value {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5em;
+  font-weight: bold;
+}
+.charts_orb .orb .orb_label {
+  text-transform: uppercase;
+  text-align: center;
+  margin-top: 1em;
+}
+.charts_orb svg {
+  width: 110px;
+  height: 110px;
+}
+.charts_orb svg circle {
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+  stroke-dasharray: 314.16, 314.16;
+  stroke-width: 2;
+  fill: transparent;
+  r: 50;
+  cx: 55;
+  cy: 55;
+}
+.charts_orb svg circle.fill {
+  stroke: #d3d3d3;
+}
+.charts_orb svg circle.progress {
+  stroke: #ff6b00;
+  transition: stroke-dashoffset 0.35s;
+  stroke-dashoffset: 214.16;
+  -webkit-animation: NAME-YOUR-ANIMATION 1.5s forwards;
+  -webkit-animation-timing-function: linear;
+}
+@-webkit-keyframes NAME-YOUR-ANIMATION {
+  0% {
+    stroke-dashoffset: 314.16;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.live-count {
+  border: 2px gray solid;
+}
+.country-table table {
+  margin-top: 50px !important;
+}
+table {
+  width: 100%;
+  border: 2px gold dotted;
+}
+
+.double-nav .breadcrumb-dn {
+  color: #fff;
+}
+
+hr {
+  color: white;
+}
+
+footer {
+  color: black;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+}
+
+.graph1 {
+  background-color: #d3d3d3;
+  width: 100% !important;
+  margin-top: 20px;
+}
+.country_graph {
+  padding: 10px;
+  border: 1px white solid !important;
+  margin-top: 10px;
+}
+
+.daily_data {
+  border: 2px white solid;
+  padding: 10px;
+  margin-top: 10px;
+}

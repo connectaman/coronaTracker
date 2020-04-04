@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>India Status</title>
+    <link
+      rel="shortcut icon"
+      href="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/SARS-CoV-2_without_background.png/220px-SARS-CoV-2_without_background.png"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <%- include ('partials/header') %>
+    <div class="container">
+      <% if(status=="sucess"){ %>
+      <center>
+        <div
+          class="alert alert-success"
+          style="margin-top: 5px;width:50%;text-align: center;position: center;"
+          role="alert"
+        >
+          Data Successfully Updated
+        </div>
+      </center>
+      <%} %> <% data["states_daily"].forEach(function(result){%>
+      <div class="daily_data">
+        <h4 style="text-align: center;">
+          <span style="color: yellow;">Date :</span> <%= result.date %> | <% if
+          (result.status == "Confirmed"){ %>
+          <span style="color: pink;">Status : </span>
+          <span style="color: yellow;"><%= result.status %> </span><% } else if
+          (result.status == "Recovered"){ %>
+          <span style="color: pink;">Status : </span>
+          <span style="color: green;"><%= result.status %> </span>
+          <% } else if (result.status == "Deceased"){ %>
+          <span style="color: pink;">Status : </span>
+          <span style="color: red;"><%= result.status %> </span>
+          <% }%>|
+          <span style="color: cyan;">Total : </span><%= result.total%>
+        </h4>
+        <div class="row">
+          <div class="col-md-4">
+            <li>
+              Andaman and Nicobar Island : <%= result.andamanandnicobarislands
+              %>
+            </li>
+            <li>Andra Pradesh : <%= result.andhrapradesh %></li>
+            <li>Arunnachal Pradesh : <%= result.arunachalpradesh %></li>
+            <li>Assam : <%= result.assam %></li>
+            <li>Bihar : <%= result.bihar %></li>
+            <li>Chandigarh : <%= result.chandigarh %></li>
+            <li>Chhattisgarh : <%= result.chhattisgarh %></li>
+            <li>Daman and Ddiu : <%= result.damananddiu %></li>
+            <li>West Bengal : <%= result.westbengal %></li>
+            <li>Delhi : <%= result.delhi %></li>
+            <li>Goa : <%= result.goa %></li>
+            <li>Gujarat : <%= result.gujarat %></li>
+          </div>
+          <div class="col-md-4">
+            <li>Haryana : <%= result.haryana %></li>
+            <li>Himachal Pradesh : <%= result.himachalpradesh %></li>
+            <li>Jammu and Kashmir : <%= result.jammuandkashmir %></li>
+            <li>Jharkhand : <%= result.jharkhand %></li>
+            <li>Karnataka : <%= result.karnataka %></li>
+            <li>Kerala : <%= result.kerala %></li>
+            <li>Ladakh : <%= result.ladakh %></li>
+            <li>Lakshadweep : <%= result.lakshadweep %></li>
+            <li>Madya Pradesh : <%= result.madhyapradesh %></li>
+            <li>Maharashtra : <%= result.maharashtra %></li>
+            <li>Manipur : <%= result.manipur %></li>
+            <li>Meghalaya : <%= result.meghalaya %></li>
+          </div>
+          <div class="col-md-4">
+            <li>Mizoram : <%= result.mizoram %></li>
+            <li>Nagaland : <%= result.nagaland %></li>
+            <li>Odisha : <%= result.odisha %></li>
+            <li>Puducherry : <%= result.puducherry %></li>
+            <li>Punjab : <%= result.punjab %></li>
+            <li>Rajasthan : <%= result.rajasthan %></li>
+            <li>Sikkim <%= result.sikkim %></li>
+            <li>Tamil Nadu : <%= result.tamilnadu %></li>
+            <li>Telangana : <%= result.telangana %></li>
+            <li>Tripura : <%= result.tripura %></li>
+            <li>Uttarakhand : <%= result.uttarakhand %></li>
+            <li>Uttar Pradesh : <%= result.uttarpradesh %></li>
+          </div>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+    <%- include ('partials/footer') %>
+  </body>
+</html>

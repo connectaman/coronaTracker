@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CORONA TRACKER</title>
+    <link rel="stylesheet" href="/css/jquery.dataTables.css" />
+    <link
+      rel="shortcut icon"
+      href="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/SARS-CoV-2_without_background.png/220px-SARS-CoV-2_without_background.png"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <%- include ('partials/header') %>
+    <div class="container">
+      <center><h1 style="color: #85929E;">Live Updates</h1></center>
+
+      <!--  -->
+      <div class="row live-count">
+        <div class="col-md-4">
+          <section class="charts_orb">
+            <article class="orb">
+              <div class="orb_graphic">
+                <div class="orb_value count">
+                  <%= data["latest"]["confirmed"] %>
+                </div>
+                <br />
+              </div>
+              <div class="orb_label">
+                Total confirmed cases
+              </div>
+            </article>
+          </section>
+        </div>
+        <div class="col-md-4">
+          <section class="charts_orb">
+            <article class="orb">
+              <div class="orb_graphic">
+                <div class="orb_value count" style="color: red;">
+                  <%= data["latest"]["deaths"] %>
+                </div>
+                <br />
+              </div>
+              <div class="orb_label" style="color: red;">
+                Total death cases
+              </div>
+            </article>
+          </section>
+        </div>
+        <div class="col-md-4">
+          <section class="charts_orb">
+            <article class="orb">
+              <div class="orb_graphic">
+                <div class="orb_value count" style="color: green;">
+                  <%= data["latest"]["recovered"] %>
+                </div>
+                <br />
+              </div>
+              <div class="orb_label" style="color: green;">
+                Total recovered cases
+              </div>
+            </article>
+          </section>
+        </div>
+      </div>
+      <!-- Container end -->
+      <div class="row country-table">
+        <table id="live_table">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Country</th>
+              <th>Country Code</th>
+              <th>Country Population</th>
+              <th>Confirmed Cases</th>
+              <th>Death Cases</th>
+              <!-- <th>Recover Cases</th> -->
+            </tr>
+          </thead>
+          <tbody>
+            <% data["locations"].forEach(function(result){ %>
+            <tr>
+              <td><%= result.id %></td>
+              <td><%= result.country %></td>
+              <td><%= result.country_code %></td>
+              <td><%= result.country_population %></td>
+              <td><%= result.latest.confirmed %></td>
+              <td><%= result.latest.deaths %></td>
+              <!-- <td><%= result.latest.recovered %></td> -->
+            </tr>
+            <%}) %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <%- include ('partials/footer') %>
+  </body>
+  <script
+    type="text/javascript"
+    charset="utf8"
+    src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"
+  ></script>
+  <script
+    type="text/javascript"
+    charset="utf8"
+    src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"
+  ></script>
+  <script>
+    $(document).ready(function() {
+      $("#live_table").DataTable();
+    });
+  </script>
+</html>
